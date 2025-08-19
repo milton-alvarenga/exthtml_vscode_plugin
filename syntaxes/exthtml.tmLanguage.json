@@ -1,0 +1,170 @@
+
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "ExtHTML",
+  "scopeName": "text.exthtml",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#doctype" },
+    { "include": "#script" },
+    { "include": "#style" },
+    { "include": "#html-tags" },
+    { "include": "#components" },
+    { "include": "#text" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.exthtml",
+          "begin": "<!--",
+          "end": "-->",
+          "patterns": [{ "include": "#comment-content" }]
+        },
+        {
+          "name": "comment.line.exthtml",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.exthtml",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "comment-content": {
+      "patterns": []
+    },
+    "doctype": {
+      "patterns": [
+        {
+          "name": "meta.doctype.exthtml",
+          "match": "<!DOCTYPE\\s+html.*?>",
+          "captures": {
+            "0": { "name": "keyword.other.doctype.html" }
+          }
+        }
+      ]
+    },
+    "script": {
+      "patterns": [
+        {
+          "name": "meta.embedded.block.javascript.exthtml",
+          "begin": "(<script)([^>]*)>",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.begin.html" },
+            "2": { "name": "entity.other.attribute-name.html" }
+          },
+          "end": "(</script>)",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.tag.end.html" }
+          },
+          "patterns": [
+            { "include": "source.js" }
+          ]
+        }
+      ]
+    },
+    "style": {
+      "patterns": [
+        {
+          "name": "meta.embedded.block.css.exthtml",
+          "begin": "(<style)([^>]*)>",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.begin.html" },
+            "2": { "name": "entity.other.attribute-name.html" }
+          },
+          "end": "(</style>)",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.tag.end.html" }
+          },
+          "patterns": [
+            { "include": "source.css" }
+          ]
+        }
+      ]
+    },
+    "html-tags": {
+      "patterns": [
+        {
+          "name": "meta.tag.exthtml",
+          "begin": "<([a-zA-Z][a-zA-Z0-9_-]*)",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.tag.begin.html" },
+            "1": { "name": "entity.name.tag.html" }
+          },
+          "end": "/?>",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.tag.end.html" }
+          },
+          "patterns": [
+            {
+              "name": "entity.other.attribute-name.html",
+              "match": "\\b([a-zA-Z_][a-zA-Z0-9:_-]*)"
+            },
+            {
+              "name": "string.quoted.double.html",
+              "begin": "\"",
+              "end": "\""
+            },
+            {
+              "name": "string.quoted.single.html",
+              "begin": "'",
+              "end": "'"
+            },
+            {
+              "name": "variable.other.attribute-value.dynamic.exthtml",
+              "begin": "\\{",
+              "end": "\\}"
+            }
+          ]
+        }
+      ]
+    },
+    "components": {
+      "patterns": [
+        {
+          "name": "meta.component.exthtml",
+          "begin": "<([A-Z][a-zA-Z0-9_-]*)",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.tag.begin.html" },
+            "1": { "name": "entity.name.tag.component.exthtml" }
+          },
+          "end": "/?>",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.tag.end.html" }
+          },
+          "patterns": [
+            {
+              "name": "entity.other.attribute-name.html",
+              "match": "\\b([a-zA-Z_][a-zA-Z0-9:_-]*)"
+            },
+            {
+              "name": "variable.other.attribute-value.dynamic.exthtml",
+              "begin": "\\{",
+              "end": "\\}"
+            },
+            {
+              "name": "string.quoted.double.html",
+              "begin": "\"",
+              "end": "\""
+            },
+            {
+              "name": "string.quoted.single.html",
+              "begin": "'",
+              "end": "'"
+            }
+          ]
+        }
+      ]
+    },
+    "text": {
+      "patterns": [
+        {
+          "name": "text.plain.exthtml",
+          "match": "[^<]+"
+        }
+      ]
+    }
+  }
+}
