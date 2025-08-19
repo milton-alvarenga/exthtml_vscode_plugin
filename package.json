@@ -1,0 +1,25 @@
+{
+  "name": "exthtml",
+  "displayName": "extHTML Syntax Highlight",
+  "description": "VSCode extension to add support to extHTML language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "exthtml",
+      "aliases": ["extHTML", "exthtml"],
+      "extensions": ["exthtml"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "exthtml",
+      "scopeName": "source.exthtml",
+      "path": "./syntaxes/exthtml.tmLanguage.json"
+    }]
+  }
+}
