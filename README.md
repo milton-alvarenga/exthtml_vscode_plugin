@@ -23,6 +23,11 @@ and provide syntax highlighting and language features.
 3. Click the `...` menu at the top-right and select **Install from VSIX...**
 4. Select the downloaded `.vsix` file.
 
+# How to generated the .vsix
+1. Go to vscode extension project root
+2. Execute `/node_modules/@vscode/vsce/vsce package`
+3. If vsce is not instaled, just execute the install command `npm install @vscode/vsce`
+
 ## Known Issues
 
 Calling out known issues can help limit users opening duplicate issues against your extension.
