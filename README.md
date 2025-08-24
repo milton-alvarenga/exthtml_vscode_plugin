@@ -26,7 +26,7 @@ and provide syntax highlighting and language features.
 # How to generated the .vsix
 1. Go to vscode extension project root
 2. Execute `/node_modules/@vscode/vsce/vsce package`
-3. If vsce is not instaled, just execute the install command `npm install @vscode/vsce`
+3. If vsce is not installed, just execute the install command `npm install @vscode/vsce`
 
 ## Known Issues
 
